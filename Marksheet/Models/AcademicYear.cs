@@ -10,5 +10,6 @@ namespace Marksheet.Models
         public int Id { get; set; }
         public string FiscalYear { get; set; }
         public string Year { get; set; }
+        public bool ActiveYear { get; set; }
     }
 }

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "SelectSchool";
+}
+
+<h2>SelectSchool</h2>
+
+<div class="row">
+    @Html.BeginForm("AddEdit","MarkSheet")
+    {
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Select School</label>
+            @Html.DropDownList("SchoolId",new SelectList(ViewBag.SchoolId,"value","text"),"--Select--",new {@class="form-control" ,id="ddlSchool"})
+            </div>
+
+    </div>
+    }
+
+</div>
+
