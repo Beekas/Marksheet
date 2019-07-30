@@ -14,5 +14,6 @@ namespace Marksheet.Models
         public int PPassMarks { get; set; }
         public int TPassMarks { get; set; }
         public bool Optional { get; set; }
+        public bool HasPractical { get; set; }
     }
 }

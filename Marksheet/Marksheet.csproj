@@ -141,6 +141,14 @@
     <Compile Include="Migrations\201907291209109_academicYear.Designer.cs">
       <DependentUpon>201907291209109_academicYear.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907300350437_marksheetAndSubject.cs" />
+    <Compile Include="Migrations\201907300350437_marksheetAndSubject.Designer.cs">
+      <DependentUpon>201907300350437_marksheetAndSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907300435529_somechanges.cs" />
+    <Compile Include="Migrations\201907300435529_somechanges.Designer.cs">
+      <DependentUpon>201907300435529_somechanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcademicYear.cs" />
     <Compile Include="Models\Marksheet.cs" />
@@ -213,6 +221,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907291209109_academicYear.resx">
       <DependentUpon>201907291209109_academicYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300350437_marksheetAndSubject.resx">
+      <DependentUpon>201907300350437_marksheetAndSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300435529_somechanges.resx">
+      <DependentUpon>201907300435529_somechanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,7 +11,12 @@ namespace Marksheet.Controllers
 {
     public class RequestController : Controller
     {
-        private readonly 
+        private readonly MarkSheetEntities db;
+
+        public RequestController(MarkSheetEntities _db)
+        {
+            db = _db;
+        }
         // GET: Request
         public ActionResult Index()
         {
