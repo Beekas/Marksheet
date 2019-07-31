@@ -15,7 +15,7 @@ namespace Marksheet.Models
         public string Phone { get; set; }
         public DateTime DOB { get; set; }
         public string Mobile { get; set; }
-        public int SchoolId{ get; set; }
+        public int SchoolId { get; set; }
         public virtual School School { get; set; }
     }
 }

@@ -165,3 +165,7 @@ D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.pdb
 D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.academicYear.resources
 D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.marksheetAndSubject.resources
 D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.somechanges.resources
+D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.somechanges1.resources
+D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.somechange.resources
+D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.somechange1.resources
+D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.activedays.resources

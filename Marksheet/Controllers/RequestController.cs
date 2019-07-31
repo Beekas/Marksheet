@@ -13,10 +13,6 @@ namespace Marksheet.Controllers
     {
         private readonly MarkSheetEntities db;
 
-        public RequestController(MarkSheetEntities _db)
-        {
-            db = _db;
-        }
         // GET: Request
         public ActionResult Index()
         {

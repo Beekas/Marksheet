@@ -11,7 +11,7 @@ namespace Marksheet.Models
         public int SchoolId { get; set; }
         public virtual School School { get; set; }
         public string  TerminalName { get; set; }
-        public int Activedays { get; set; }
+        public int Activeday { get; set; }
         public int AcademicYearId { get; set; }
         public virtual AcademicYear AcademicYear { get; set; }
 

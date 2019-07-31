@@ -12,9 +12,9 @@ namespace Marksheet.ViewModels
         public int StudentId { get; set; }
         public string StudentName { get; set; }
         public int? SchoolId { get; set; }
-        public SelectList School { get; set; }
-        public string AcedamicYearId { get; set; }
-        public SelectList AcademicYear { get; set; }
+        public string School { get; set; }
+        public int AcedamicYearId { get; set; }
+        public string AcademicYear { get; set; }
         public SelectList Terminal { get; set; }
         public string Term { get; set; }
         public int Attendance { get; set; }

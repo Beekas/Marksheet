@@ -12,7 +12,8 @@ namespace Marksheet.DAL
             public MarkSheetEntities()
                 : base("DefaultConnection")
             {
-            }
+            this.Configuration.LazyLoadingEnabled = true;
+        }
            
 
         public DbSet<Student> Students{ get; set; }

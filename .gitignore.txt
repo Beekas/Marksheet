@@ -265,3 +265,6 @@ web.config
 
 #appSetting
 appsettings.json
+
+#vs folder
+.vs

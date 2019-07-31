@@ -3,18 +3,24 @@
     ViewBag.Title = "SelectSchool";
 }
 
-<h2>SelectSchool</h2>
+<h2>
+    Choose School for Mark Entry
+</h2>
 
 <div class="row">
-    @Html.BeginForm("AddEdit","MarkSheet")
+    @using (Html.BeginForm("AddEdit", "MarkSheet", FormMethod.Get))
     {
-    <div class="col-md-6">
-        <div class="form-group">
-            <label>Select School</label>
-            @Html.DropDownList("SchoolId",new SelectList(ViewBag.SchoolId,"value","text"),"--Select--",new {@class="form-control" ,id="ddlSchool"})
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Select School</label>
+                @Html.DropDownList("SchoolId", new SelectList(ViewBag.SchoolId, "value", "text"), "--Select--", new { @class = "form-control", id = "ddlSchool" })
             </div>
 
-    </div>
+        </div>
+        <div class="col-md-12">
+            <label></label>
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+        </div>
     }
 
 </div>

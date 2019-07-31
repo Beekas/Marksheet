@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActiveDaysController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarkSheetController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
@@ -149,6 +150,22 @@
     <Compile Include="Migrations\201907300435529_somechanges.Designer.cs">
       <DependentUpon>201907300435529_somechanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907300604238_somechanges1.cs" />
+    <Compile Include="Migrations\201907300604238_somechanges1.Designer.cs">
+      <DependentUpon>201907300604238_somechanges1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907300613552_somechange.cs" />
+    <Compile Include="Migrations\201907300613552_somechange.Designer.cs">
+      <DependentUpon>201907300613552_somechange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907300614273_somechange1.cs" />
+    <Compile Include="Migrations\201907300614273_somechange1.Designer.cs">
+      <DependentUpon>201907300614273_somechange1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907310706049_activedays.cs" />
+    <Compile Include="Migrations\201907310706049_activedays.Designer.cs">
+      <DependentUpon>201907310706049_activedays.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcademicYear.cs" />
     <Compile Include="Models\Marksheet.cs" />
@@ -158,7 +175,9 @@
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\ActiveDays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\GradeVM.cs" />
     <Compile Include="ViewModels\MarksheetVM.cs" />
+    <Compile Include="ViewModels\MarksVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -197,6 +216,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MarkSheet\SelectSchool.cshtml" />
+    <Content Include="Views\MarkSheet\AddEdit.cshtml" />
+    <Content Include="Views\MarkSheet\Index.cshtml" />
+    <Content Include="Views\ActiveDays\Create.cshtml" />
+    <Content Include="Views\ActiveDays\Delete.cshtml" />
+    <Content Include="Views\ActiveDays\Details.cshtml" />
+    <Content Include="Views\ActiveDays\Edit.cshtml" />
+    <Content Include="Views\ActiveDays\Index.cshtml" />
+    <Content Include="Views\MarkSheet\ResultMark.cshtml" />
+    <Content Include="Views\MarkSheet\ViewMarkSheet.cshtml" />
+    <Content Include="Views\MarkSheet\ViewGradeSheet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,6 +256,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907300435529_somechanges.resx">
       <DependentUpon>201907300435529_somechanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300604238_somechanges1.resx">
+      <DependentUpon>201907300604238_somechanges1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300613552_somechange.resx">
+      <DependentUpon>201907300613552_somechange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300614273_somechange1.resx">
+      <DependentUpon>201907300614273_somechange1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907310706049_activedays.resx">
+      <DependentUpon>201907310706049_activedays.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

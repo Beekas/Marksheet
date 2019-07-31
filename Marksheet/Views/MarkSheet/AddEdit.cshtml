@@ -1,0 +1,228 @@
+﻿@model List<Marksheet.ViewModels.MarksheetVM>
+
+@{
+    ViewBag.Title = "MarkSheet Entry";
+}
+
+<div class="row">
+    <h2 class="text-center">Student Terminal Mark Entry </h2>
+    @using (Html.BeginForm("AddEdit", "Marksheet", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.ValidationSummary()
+        if (ViewBag.ErrorMessage != null)
+        {
+            <div style="border:solid 1px green">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+        <div class="col-md-4">
+            <label>Terminal</label>
+            @Html.DropDownList("Term",Model[0].Terminal,"--Select--", new { @class = "form-control", id = "ddlTerm" })
+        </div>
+        <div class="col-md-4">
+            <label>Academic Year</label>
+            @Model[0].AcademicYear
+        </div>
+        <div class="col-md-4">
+            <label>School Name</label>
+            @Model[0].School
+        </div>
+        <div class="col-md-12">&nbsp;</div>
+        <table class="table table-bordered" id="dataTable" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <th rowspan="2">Student Name</th>
+                <th rowspan="2">Attendance</th>
+                <th colspan="2" >English</th>
+                <th rowspan="2">Comp. Math</th>
+                <th rowspan="2">Nepali</th>
+                <th rowspan="2">Social Studies</th>
+                <th colspan="2">Science</th>
+                <th colspan="2" >Health&Pop.</th>
+                @if (Model[0].Opt1HasPractical)
+                {
+                    <th colspan="2" >@Model[0].Optional1Name</th>
+                }
+                else
+                {
+                    <th rowspan="2">@Model[0].Optional1Name</th>
+
+                }
+                @if (Model[0].Opt2HasPractical)
+                {
+                    <th colspan="2">@Model[0].Optional2Name</th>
+                }
+                else
+                {
+                    <th rowspan="2">@Model[0].Optional2Name</th>
+
+                }
+
+            </tr>
+            <tr>
+                @*<th></th>
+                <th></th>*@
+
+                <th>PR</th>
+                <th>TH</th>
+
+                @*<th>TH</th>
+                <th>TH</th>
+                <th>TH</th>*@
+
+                <th>PR</th>
+                <th>TH</th>
+
+                <th>PR</th>
+                <th>TH</th>
+                @if (Model[0].Opt1HasPractical)
+                {
+                    <th>PR</th>
+                    <th>TH</th>
+                }
+               
+                @if (Model[0].Opt2HasPractical)
+                {
+                    <th>PR</th>
+                    <th>TH</th>
+
+                }
+               
+
+
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                int j = 0;
+                foreach (var i in Model)
+                {
+                    <tr id="dataRow">
+                        <td>@Model[j].StudentName</td>
+                        <td>@Html.TextBoxFor(a => a[j].Attendance, "0", new { @class = "form-control", id = "txtAttendance" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].EnglishPM, "0", new { @class = "form-control", id = "txtEngPr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].EnglishTM, "0", new { @class = "form-control", id = "txtEng" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].MathTM, "0", new { @class = "form-control", id = j + "txtMath" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].NepaliTM, "0", new { @class = "form-control", id = "txtNepali" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].SocialTM, "0", new { @class = "form-control", id = "txtSocial" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].SciencePM, "0", new { @class = "form-control", id = "txtSciencePr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].ScienceTM, "0", new { @class = "form-control", id = "txtScienceTh" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].HealthPM, "0", new { @class = "form-control", id = "txtHealthPr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].HealthTM, "0", new { @class = "form-control", id = "txtHealthTh" })</td>
+                        @if (Model[0].Opt1HasPractical)
+                        {
+                            <td>@Html.TextBoxFor(a => a[j].Optional1PM, "0", new { @class = "form-control", id = "txtOpt1Pr" })</td>
+                            <td>@Html.TextBoxFor(a => a[j].Optional1TM, "0", new { @class = "form-control", id = "txtOpt1Th" })</td>
+                        }
+                        else
+                        {
+                            <td>@Html.TextBoxFor(a => a[j].Optional2TM, "0", new { @class = "form-control", id = "txtOpt2Pr" })</td>
+                        }
+                        @if (Model[0].Opt2HasPractical)
+                        {
+                            <td>@Html.TextBoxFor(a => a[j].Optional2PM, "0", new { @class = "form-control", id = "txtOpt2Pr" })</td>
+                            <td>@Html.TextBoxFor(a => a[j].Optional2TM, "0", new { @class = "form-control", id = "txtOpt2Th" })</td>
+                        }
+                        else
+                        {
+                            <td>@Html.TextBoxFor(a => a[j].Optional2TM, "0", new { @class = "form-control", id = "txtOpt2Pr" })</td>
+                        }
+                        @Html.HiddenFor(a => a[j].Id)
+                        @Html.HiddenFor(a => a[j].StudentId)
+                        @Html.HiddenFor(a => a[j].SchoolId)
+                        @Html.HiddenFor(a => a[j].AcedamicYearId)
+                        @Html.HiddenFor(a => a[j].Opt1HasPractical)
+                        @Html.HiddenFor(a => a[j].Opt2HasPractical)
+                        @Html.HiddenFor(a=>a[j].AcademicYear)
+                        @Html.HiddenFor(a=>a[j].School)
+                        @Html.HiddenFor(a=>a[j].StudentName)
+
+                    </tr>
+                    j++;
+                }
+            }
+        </table>
+
+        <div class="col-md-12 text-center">
+            <input type="submit" value="Submit" class="btn btn-primary" id="btnSubmit" />
+            @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+
+    }
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+       
+
+        //function checkValidationBhuktani() {
+        //    var breakout = false;
+        //    $("body #dataTable2 tr#dataRow").each(function (e) {
+        //        var oldNIndex = $(this).find(':input:first').attr('name').match(/\d+/);
+        //        var wiwaran = $("#" + oldNIndex + "txtKhaSirsak").val();
+        //        var khaSiNa = $("#" + oldNIndex + "txtKhaSiNa").val();
+        //        var rakam = $("#" + oldNIndex + "txtJammaRakam").val();
+        //        var pauneKoNaam = $("#" + oldNIndex + "txtPauneKoNaam").val();
+        //        var pauneKoCode = $("#" + oldNIndex + "txtPauneKoCode").val();
+        //        var panNo = $("#" + oldNIndex + "txtPanNo").val();
+        //        var bhuPraNo = $("#" + oldNIndex + "txtBhuPraNo").val();
+        //        if (wiwaran == "" || khaSiNa == "" || rakam == 0 || rakam == "" || isNaN(rakam) || paunekoNaam == "" || pauneKoCode == "" || panNo == "" || bhuPraNo == "") {
+        //            alert("All Fields in भुक्तानी आदेश table are not inserted.Fill Rakam with Number");
+        //            breakout = true;
+        //            return false;
+        //        }
+        //    });
+        //    if (breakout) {
+        //        return false;
+        //    }
+        //    else {
+        //        return true;
+        //    }
+        //}
+            
+        //$("#btnSubmit").click(function (e) {
+        //    var breakout = false;
+
+        //    if (checkJornalNo() == false) {
+        //        alert("Jornal No Already exists.");
+        //        breakout = true;
+        //    }
+
+        //    if (checkValidationTextBox() == false && breakout == false) {
+        //        breakout = true;
+        //        e.preventDefault();
+        //    }
+
+        //    if (breakout == false) {
+        //        if (checkValidationDeCre() == false) {
+        //            breakout = true;
+        //            e.preventDefault();
+        //        }
+        //    }
+
+        //    if (breakout == false) {
+        //        if ($("#ddlJornalTypeTalabi").val() == "") {
+        //            if (checkValidationBhuktani() == false) {
+        //                breakout = true;
+        //                e.preventDefault();
+        //            }
+        //        }
+        //    }
+        //    if (breakout == false) {
+        //        serializeTableRow();
+        //        serializeTableRow2();
+        //    }
+
+        //    else {
+        //        e.preventDefault();
+        //    }
+        });
+
+
+    </script>
+   
+}
+
+
+
+
