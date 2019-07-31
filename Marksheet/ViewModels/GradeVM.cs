@@ -14,6 +14,13 @@ namespace Marksheet.ViewModels
         public string AcademicYear { get; set; }
         public string SchoolName { get; set; }
         public string SchoolAddress { get; set; }
+        public string StudentAddress { get; set; }
+        public string StudentClass { get; set; }
+        public string FatherName { get; set; }
+        public string MotherName { get; set; }
+        public string AcademicDay { get; set; }
+        public string PresentDay { get; set; }
+
 
         public List<SubjectVM> Subjects { get; set; }
 

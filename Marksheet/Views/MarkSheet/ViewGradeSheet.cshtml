@@ -6,6 +6,7 @@
     ViewBag.Title = "MarkSheet";
 }
 <style>
+
     #tbl {
         border-collapse: collapse;
         width: 100%;
@@ -52,76 +53,79 @@
         <div class="childFirst">
             <div style="width:100%;text-align:center;">
                 <b style="font-size:20px;">@Model.SchoolName.ToUpper()</b><br />
-                <b style="font-size:15px;">BASIC LEVEL EXAMINATION @Model.AcademicYear</b>
+                <b style="font-size:18px;">BASIC LEVEL EXAMINATION @Model.AcademicYear</b>
                 <br /><b>@Model.TerminalExam.ToUpper() TERMINAL EXAMINATION</b>
             </div>
+            <br />
+
             <div style="width:100%;">
-                <div style="width:100%;"><b>NAME OF STUDENT:</b> @Model.StudentName</div>
-                <div class="alignleft"><b>DATE OF BIRTH:</b> @Model.DOB</div><div class="alignright"><b>CLASS:</b>8</div>
-                <div class="alignleft"><b>FATHER'S NAME:</b> @Model.StudentName</div><div class="alignright"><b>SYMBOL NO:</b>8</div>
-                <div class="alignleft"><b>MOTHER'S NAME:</b> @Model.StudentName</div><div class="alignright"><b>ADDRESS:</b>@Model.StudentName</div>
+                <div style="width:100%;"><b>NAME OF STUDENT:</b> @Model.StudentName</div><div>&nbsp;</div>
+                <div class="alignleft"><b>DATE OF BIRTH:</b> @Model.DOB</div><div class="alignright"><b>CLASS:</b>8</div><div>&nbsp;</div>
+                <div class="alignleft"><b>FATHER'S NAME:</b> @Model.FatherName</div><div class="alignright"><b>SYMBOL NO:</b>8</div><div>&nbsp;</div>
+                <div class="alignleft"><b>MOTHER'S NAME:</b> @Model.MotherName</div><div class="alignright"><b>ADDRESS:</b>@Model.StudentAddress</div><div>&nbsp;</div>
+            </div>
+            <div>&nbsp;<br /></div>
+        </div>
+    </div>
+    <div class="second">
+        <table id="tbl" style="min-height:13cm;">
+            <tr>
+                <th rowspan="2">S.N</th>
+                <th rowspan="2">SUBJECT</th>
+                <th rowspan="2">CREDIT HOUR</th>
+                <th colspan="2">OBTAINED GRADE</th>
+                <th rowspan="2">FINAL GRADE</th>
+                <th rowspan="2">GRADE POINT</th>
+                <th rowspan="2">REMARKS</th>
+            </tr>
+            <tr>
+                <th>TH</th>
+                <th>PR</th>
+
+            </tr>
+            @foreach (var item in Model.Subjects)
+            {
+                <tr>
+                    <td style="text-align:center;">@item.SerialNo</td>
+                    <td>@item.SubjectName</td>
+                    <td style="text-align:center;">@item.CreditHour</td>
+                    <td style="text-align:center;">@item.Theory</td>
+                    <td style="text-align:center;">@item.Practical</td>
+                    <td style="text-align:center;">@item.FinalGrade</td>
+                    <td style="text-align:center;">@item.GradePoint</td>
+                    <td>@item.Remarks</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="6" style="text-align:center;">GRADE POINT AVERAGE(GPA)</td>
+                <td style="text-align:center;">@Model.GPA</td>
+                <td style="text-align:center;">@Model.AggregateGPA</td>
+            </tr>
+        </table>
+    </div>
+    <div class="third">
+        <div>&nbsp;</div>
+        <div style="width:100%;">
+            <div style="float:left;text-align:left; width:70%;">
+                <b>1 ONE CREDIT HOUR </b>EQUALS 32 CLOCK HOURS.<br />
+                <b>2 TH : </b>Theory, <b>PR :</b>Practical
+
+            </div>
+            <div style="float:left;text-align:center; width:30%;">
+                <table id="tbl">
+                    <tr><th colspan="2" style="text-align:center;">ATTENDANCE</th></tr>
+                    <tr><th style="width:50%;text-align:center;">ACADEMIC DAY</th><th>@Model.AcademicDay</th></tr>
+                    <tr><th style="width:50%;text-align:center;">PRESENT DAY</th><th>@Model.PresentDay</th></tr>
+                </table>
             </div>
         </div>
-    </div>
-<div class="second">
-    <table id="tbl">
-        <tr>
-            <th rowspan="2">S.N</th>
-            <th rowspan="2">SUBJECT</th>
-            <th rowspan="2">CREDIT HOUR</th>
-            <th colspan="2">OBTAINED GRADE</th>
-            <th rowspan="2">FINAL GRADE</th>
-            <th rowspan="2">GRADE POINT</th>
-            <th rowspan="2">REMARKS</th>
-        </tr>
-        <tr>
-            <th>TH</th>
-            <th>PR</th>
-
-        </tr>
-        @foreach (var item in Model.Subjects)
-        {
-            <tr>
-                <td style="text-align:center;">@item.SerialNo</td>
-                <td>@item.SubjectName</td>
-                <td style="text-align:center;">@item.CreditHour</td>
-                <td style="text-align:center;">@item.Theory</td>
-                <td style="text-align:center;">@item.Practical</td>
-                <td style="text-align:center;">@item.FinalGrade</td>
-                <td style="text-align:center;">@item.GradePoint</td>
-                <td>@item.Remarks</td>
-            </tr>
-        }
-        <tr>
-            <td colspan="6" style="text-align:center;">GRADE POINT AVERAGE(GPA)</td>
-            <td style="text-align:center;">@Model.GPA</td>
-            <td style="text-align:center;">@Model.AggregateGPA</td>
-        </tr>
-    </table>
-</div>
-<div class="third">
-    <div>&nbsp;</div>
-    <div style="width:100%;">
-        <div style="float:left;text-align:left; width:70%;">
-            <b>1 ONE CREDIT HOUR </b>EQUALS 32 CLOCK HOURS.<br />
-            <b>2 TH : </b>Theory, <b>PR :</b>Practical
-
-        </div>
-        <div style="float:left;text-align:center; width:30%;">
-            <table id="tbl">
-                <tr><th colspan="2" style="text-align:center;">ATTENDANCE</th></tr>
-                <tr><th style="width:50%;text-align:center;">ACADEMIC DAY</th><th>@Model.AcademicYear</th></tr>
-                <tr><th style="width:50%;text-align:center;">PRESENT DAY</th><th>@Model.AcademicYear</th></tr>
-            </table>
+        <div>&nbsp;<br /><br /><br /></div>
+        <div style="width:100%;">
+            <div class="alignleft3"><b>CLASS TEACHER</b></div>
+            <div class="aligncenter3"><b>EXAM CO-ORDINATOR</b></div>
+            <div class="alignright3"><b>HEAD TEACHER</b></div>
         </div>
     </div>
-    <div>&nbsp;<br /><br /><br /></div>
-    <div style="width:100%;">
-        <div class="alignleft3"><b>CLASS TEACHER</b></div>
-        <div class="aligncenter3"><b>EXAM CO-ORDINATOR</b></div>
-        <div class="alignright3"><b>HEAD TEACHER</b></div>
-    </div>
-</div>
 </div>
 <br />
 <div class="col-md-12" style="padding-left:200px;">
@@ -165,15 +169,15 @@
         function PrintElem(ele) {
             var mywindow = window.open('', 'PRINT');
 
-            mywindow.document.write('<html><head><style>' +
-                'body {font-size:20px;font-weight:bold;} div.childFirst{height:100%;}'
-                +
-                'table#tbl {border-collapse: collapse !important;width: 100%;}#tbl td, #tbl th {border: 1px solid black !important;padding: 1px !important;} .alignleft3 {float: left;text-align:left;width: 33.33333%;}.aligncenter3 {float: left;text-align:center;width: 33.33333%;}.alignright3 {float: right;text-align: right;width: 33.33333%;}' +
+            mywindow.document.write('<!DOCTYPE html><html><head><style>' +
+                'body {margin:0;padding:0;font:12pt;}*{box-sizing: border-box;-moz-box-sizing:border-box;}' +
+                '.page {width: 21cm;min-height:26.7cm;padding: 0.5cm;margin:1cm auto;border: 1px black solid;background: white;}'
+               +'table#tbl {border-collapse: collapse !important;width: 100%;}#tbl td, #tbl th {border: 1px solid black !important;padding: 1px !important;} .alignleft3 {float: left;text-align:left;width: 33.33333%;}.aligncenter3 {float: left;text-align:center;width: 33.33333%;}.alignright3 {float: right;text-align: right;width: 33.33333%;}' +
                 '.alignleft {float:left;text-align:left; width:50%;}.alignright {float:left;text-align:left;width:50%;}' +
-                '.page{page-break-after:always;width:100%;margin:5px;height:842px;}' +
-                'div#one{border:1px solid black;padding:3px;width:98%;float: left;height:182px;}' +
-                + 'div#two{border:1px solid black;padding:3px;width:98%;float: left;height:500px;}' +
-                'div#three{border:1px solid black;padding:3px;width:98%;float: left;height:150px;}' +
+
+                'div#one{width:98%;float: left;}' +
+                + 'div#two{width:98%;float: left;}' +
+                'div#three{width:98%;float: left;}' +
                 '</style><title>MarkSheet</title>');
             mywindow.document.write('</head><body >');
             mywindow.document.write(ele);
@@ -187,30 +191,32 @@
 
             return true;
         }
+            //'{box-sizing:border-box;}' +
+                  //  'body {font-size:20px;font-weight:bold;} div.childFirst{height:100%;}'
+             //'.page{border:1px solid black;page-break-after:always;width:100%;margin:5px;min-height:29.7cm;}' +
 
 
 
 
+                                                //function PrintElem(elem) {
+                                                //    var mywindow = window.open('', 'PRINT', 'height=842,width=595');
 
+                                                //    mywindow.document.write('<html><head><style>body {font-size:12px;}#tbl {border-collapse: collapse !important;width: 100%;font-size: 12px;}#tbl td, #tbl th {border: 1px solid black !important;padding: 1px !important;} .alignleft {float: left;text-align: left;width: 33.33333%;}.aligncenter {float: left;text-align: center;width: 33.33333%;}.alignright {float: right;text-align: right;width: 33.33333%;}</style><title></title>');
+                                                //    mywindow.document.write('</head><body >');
+                                                //    //mywindow.document.write('<h1>' + document.title  + '</h1>');
+                                                //    mywindow.document.write(document.getElementById(elem).innerHTML);
+                                                //    mywindow.document.write('</body></html>');
 
-                                            //function PrintElem(elem) {
-                                            //    var mywindow = window.open('', 'PRINT', 'height=842,width=595');
+                                                //    mywindow.document.close(); // necessary for IE >= 10
+                                                //    mywindow.focus(); // necessary for IE >= 10*/
 
-                                            //    mywindow.document.write('<html><head><style>body {font-size:12px;}#tbl {border-collapse: collapse !important;width: 100%;font-size: 12px;}#tbl td, #tbl th {border: 1px solid black !important;padding: 1px !important;} .alignleft {float: left;text-align: left;width: 33.33333%;}.aligncenter {float: left;text-align: center;width: 33.33333%;}.alignright {float: right;text-align: right;width: 33.33333%;}</style><title></title>');
-                                            //    mywindow.document.write('</head><body >');
-                                            //    //mywindow.document.write('<h1>' + document.title  + '</h1>');
-                                            //    mywindow.document.write(document.getElementById(elem).innerHTML);
-                                            //    mywindow.document.write('</body></html>');
+                                                //    mywindow.print();
+                                                //    mywindow.close();
 
-                                            //    mywindow.document.close(); // necessary for IE >= 10
-                                            //    mywindow.focus(); // necessary for IE >= 10*/
+                                                //    return true;
+                                                //}
 
-                                            //    mywindow.print();
-                                            //    mywindow.close();
+                                          //  });
 
-                                            //    return true;
-                                            //}
-
-                                      //  });
     </script>
 }

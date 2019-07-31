@@ -37,12 +37,28 @@ namespace Marksheet.Controllers
 
             if (marksheet != null)
             {
+                if (!db.ActiveDays.Any(m => m.SchoolId == marksheet.Student.SchoolId &&
+                                         m.AcademicYearId == marksheet.AcedamicYearId &&
+                                         m.TerminalName == marksheet.Term))
+                {
+                    TempData["ErrorMessage"] = "Error! No active days set.";
+                    return RedirectToAction("Index");
+                }
                 marksvm.StudentName = marksheet.Student.StudentName;
                 marksvm.TerminalExam = marksheet.Term;
                 marksvm.DOB = marksheet.Student.DOB.ToString("yyyy-mm-dd");
-                marksvm.RollNo = "";
+                marksvm.RollNo = "";// marksheet.Student.RollNo;
                 marksvm.SchoolName = marksheet.Student.School.SchoolName;
                 marksvm.SchoolAddress = marksheet.Student.School.Municipality;
+                marksvm.FatherName = marksheet.Student.FatherName;
+                marksvm.MotherName = marksheet.Student.MotherName;
+                marksvm.StudentAddress = marksheet.Student.Address;
+                marksvm.PresentDay = marksheet.Attendance.ToString();
+                marksvm.AcademicYear = marksheet.AcademicYear.Year;
+
+                marksvm.AcademicDay = db.ActiveDays.FirstOrDefault(m => m.SchoolId == marksheet.Student.SchoolId &&
+                                        m.AcademicYearId == marksheet.AcedamicYearId &&
+                                        m.TerminalName == marksheet.Term).Activeday.ToString();
 
                 foreach (string item in Subjects)
                 {
@@ -143,7 +159,7 @@ namespace Marksheet.Controllers
                         case "Optional1":
                             bool haspractical = db.OptionalSubjects.Include(m => m.Subject).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.HasPractical;
                             objSubj.SerialNo = "07";
-                            objSubj.SubjectName = item + " " + db.OptionalSubjects.Include(m => m.Subject).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
+                            objSubj.SubjectName =  db.OptionalSubjects.Include(m => m.Subject).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
                             objSubj.FullMarks = "100";
                             objSubj.PassMarks = "40";
                             objSubj.Theory = marksheet.Optional1TM.ToString();
@@ -172,7 +188,7 @@ namespace Marksheet.Controllers
                         case "Optional2":
                             bool haspractical2 = db.OptionalSubjects.Include(m => m.Subject).OrderByDescending(s => s.Id).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.HasPractical;
                             objSubj.SerialNo = "08";
-                            objSubj.SubjectName = item + " " + db.OptionalSubjects.Include(m => m.Subject).OrderByDescending(s => s.Id).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
+                            objSubj.SubjectName =  db.OptionalSubjects.Include(m => m.Subject).OrderByDescending(s => s.Id).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
                             objSubj.FullMarks = "100";
                             objSubj.PassMarks = "40";
                             objSubj.Theory = marksheet.Optional2TM.ToString();
@@ -256,12 +272,29 @@ namespace Marksheet.Controllers
 
             if (marksheet != null)
             {
+                if (!db.ActiveDays.Any(m => m.SchoolId == marksheet.Student.SchoolId &&
+                                         m.AcademicYearId == marksheet.AcedamicYearId &&
+                                         m.TerminalName == marksheet.Term))
+                {
+                    TempData["ErrorMessage"] = "Error! No active days set.";
+                    return RedirectToAction("Index");
+                }
+
                 marksvm.StudentName = marksheet.Student.StudentName;
                 marksvm.TerminalExam = marksheet.Term;
                 marksvm.DOB = marksheet.Student.DOB.ToString("yyyy-mm-dd");
                 marksvm.RollNo = "";
                 marksvm.SchoolName = marksheet.Student.School.SchoolName;
                 marksvm.SchoolAddress = marksheet.Student.School.Municipality;
+
+                marksvm.FatherName = marksheet.Student.FatherName;
+                marksvm.MotherName = marksheet.Student.MotherName;
+                marksvm.StudentAddress = marksheet.Student.Address;
+                marksvm.PresentDay = marksheet.Attendance.ToString();
+                marksvm.AcademicYear = marksheet.AcademicYear.Year;
+                marksvm.AcademicDay = db.ActiveDays.FirstOrDefault(m => m.SchoolId == marksheet.Student.SchoolId &&
+                                        m.AcademicYearId == marksheet.AcedamicYearId &&
+                                        m.TerminalName == marksheet.Term).Activeday.ToString();
 
                 foreach (string item in Subjects)
                 {
@@ -340,7 +373,7 @@ namespace Marksheet.Controllers
                         case "Optional1":
                             bool haspractical = db.OptionalSubjects.Include(m => m.Subject).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.HasPractical;
                             objSubj.SerialNo = "07";
-                            objSubj.SubjectName = item + " " + db.OptionalSubjects.Include(m => m.Subject).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
+                            objSubj.SubjectName =  db.OptionalSubjects.Include(m => m.Subject).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
                             objSubj.CreditHour = "4";
                             objSubj.Remarks = "";
                             if (haspractical)
@@ -365,7 +398,7 @@ namespace Marksheet.Controllers
                         case "Optional2":
                             bool haspractical2 = db.OptionalSubjects.Include(m => m.Subject).OrderByDescending(s => s.Id).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.HasPractical;
                             objSubj.SerialNo = "08";
-                            objSubj.SubjectName = item + " " + db.OptionalSubjects.Include(m => m.Subject).OrderByDescending(s => s.Id).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
+                            objSubj.SubjectName =  db.OptionalSubjects.Include(m => m.Subject).OrderByDescending(s => s.Id).FirstOrDefault(m => m.SchoolId == marksheet.SchoolId).Subject.SubName;
                             objSubj.CreditHour = "4";
                             objSubj.Remarks = "";
                             if (haspractical2)
