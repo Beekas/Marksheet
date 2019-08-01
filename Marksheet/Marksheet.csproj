@@ -166,6 +166,14 @@
     <Compile Include="Migrations\201907310706049_activedays.Designer.cs">
       <DependentUpon>201907310706049_activedays.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908010402312_marksheet.cs" />
+    <Compile Include="Migrations\201908010402312_marksheet.Designer.cs">
+      <DependentUpon>201908010402312_marksheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908011208285_marksheet1.cs" />
+    <Compile Include="Migrations\201908011208285_marksheet1.Designer.cs">
+      <DependentUpon>201908011208285_marksheet1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcademicYear.cs" />
     <Compile Include="Models\Marksheet.cs" />
@@ -178,6 +186,7 @@
     <Compile Include="ViewModels\GradeVM.cs" />
     <Compile Include="ViewModels\MarksheetVM.cs" />
     <Compile Include="ViewModels\MarksVM.cs" />
+    <Compile Include="ViewModels\ResultVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -188,6 +197,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -216,16 +226,18 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MarkSheet\SelectSchool.cshtml" />
-    <Content Include="Views\MarkSheet\AddEdit.cshtml" />
+    <Content Include="Views\MarkSheet\Add.cshtml" />
     <Content Include="Views\MarkSheet\Index.cshtml" />
     <Content Include="Views\ActiveDays\Create.cshtml" />
     <Content Include="Views\ActiveDays\Delete.cshtml" />
     <Content Include="Views\ActiveDays\Details.cshtml" />
     <Content Include="Views\ActiveDays\Edit.cshtml" />
     <Content Include="Views\ActiveDays\Index.cshtml" />
-    <Content Include="Views\MarkSheet\ResultMark.cshtml" />
-    <Content Include="Views\MarkSheet\ViewMarkSheet.cshtml" />
     <Content Include="Views\MarkSheet\ViewGradeSheet.cshtml" />
+    <Content Include="Views\MarkSheet\Edit.cshtml" />
+    <Content Include="Views\MarkSheet\SelectSchoolEdit.cshtml" />
+    <Content Include="Views\MarkSheet\ViewGradeSheetSchool.cshtml" />
+    <Content Include="Views\MarkSheet\SelectSchoolPrint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,6 +280,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907310706049_activedays.resx">
       <DependentUpon>201907310706049_activedays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908010402312_marksheet.resx">
+      <DependentUpon>201908010402312_marksheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908011208285_marksheet1.resx">
+      <DependentUpon>201908011208285_marksheet1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

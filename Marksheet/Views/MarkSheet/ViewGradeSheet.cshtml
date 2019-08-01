@@ -1,9 +1,6 @@
 ﻿@model Marksheet.ViewModels.GradeVM
 @{
-    /**/
-
-
-    ViewBag.Title = "MarkSheet";
+    ViewBag.Title = "GradeSheet";
 }
 <style>
 
@@ -48,16 +45,20 @@
         width: 33.33%;
     }
 </style>
+<div class="col-md-12">Student Wise MarkSheet</div>
 <div class="row" id="printDiv" style="font-size:12px;width:845px;">
     <div class="first">
         <div class="childFirst">
-            <div style="width:100%;text-align:center;">
-                <b style="font-size:20px;">@Model.SchoolName.ToUpper()</b><br />
-                <b style="font-size:18px;">BASIC LEVEL EXAMINATION @Model.AcademicYear</b>
-                <br /><b>@Model.TerminalExam.ToUpper() TERMINAL EXAMINATION</b>
+            <div style="width:100%;min-height:3cm;">
+                <div style="width:10%;text-align:center;float:left;">
+                    <img style="max-height:100%;max-width:100%;" src="~/images/logo.png" />
+                </div>
+                <div style="width:90%;text-align:center;float:left;">
+                    <b style="font-size:20px;">@Model.SchoolName.ToUpper()</b><br />
+                    <b style="font-size:18px;">BASIC LEVEL EXAMINATION @Model.AcademicYear</b>
+                    <br /><b>@Model.TerminalExam.ToUpper() TERMINAL EXAMINATION</b>
+                </div>
             </div>
-            <br />
-
             <div style="width:100%;">
                 <div style="width:100%;"><b>NAME OF STUDENT:</b> @Model.StudentName</div><div>&nbsp;</div>
                 <div class="alignleft"><b>DATE OF BIRTH:</b> @Model.DOB</div><div class="alignright"><b>CLASS:</b>8</div><div>&nbsp;</div>

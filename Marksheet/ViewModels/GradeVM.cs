@@ -20,7 +20,7 @@ namespace Marksheet.ViewModels
         public string MotherName { get; set; }
         public string AcademicDay { get; set; }
         public string PresentDay { get; set; }
-
+        public string Logo { get; set; }
 
         public List<SubjectVM> Subjects { get; set; }
 
@@ -31,7 +31,7 @@ namespace Marksheet.ViewModels
         
     }
 
-    public class SubjectVM {
+        public class SubjectVM {
         public string SerialNo { get; set; }
         public string SubjectName { get; set; }
         public string CreditHour{ get; set; }

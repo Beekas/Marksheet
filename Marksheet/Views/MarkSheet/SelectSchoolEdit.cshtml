@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "SelectSchoolEdit";
+}
+
+<h2>
+    Choose School, Terminal and Year for Editing MarkSheet
+</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+
+    </div>
+    @using (Html.BeginForm("Edit", "MarkSheet", FormMethod.Get))
+    {
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Select School</label>
+                @Html.DropDownList("SchoolId", null, new { @class = "form-control", id = "ddlSchool" })
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Select Year</label>
+                @Html.DropDownList("ActiveYearId", null, new { @class = "form-control", id = "ddlSchool" })
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Select Terminal</label>
+                @Html.DropDownList("Terminal", null, new { @class = "form-control", id = "ddlSchool" })
+            </div>
+
+        </div>
+        <div class="col-md-12">
+            <label></label>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    }
+
+</div>
+

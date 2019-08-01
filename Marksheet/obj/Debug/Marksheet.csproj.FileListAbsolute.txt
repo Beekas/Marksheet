@@ -258,3 +258,5 @@ F:\Marksheet\Marksheet\obj\Debug\Marksheet.csproj.CoreCompileInputs.cache
 F:\Marksheet\Marksheet\obj\Debug\Marksheet.csproj.CopyComplete
 F:\Marksheet\Marksheet\obj\Debug\Marksheet.dll
 F:\Marksheet\Marksheet\obj\Debug\Marksheet.pdb
+D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.marksheet.resources
+D:\Projects\Marksheet\Marksheet\obj\Debug\Marksheet.Migrations.marksheet1.resources

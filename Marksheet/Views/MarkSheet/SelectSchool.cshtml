@@ -1,14 +1,21 @@
 ﻿
 @{
-    ViewBag.Title = "SelectSchool";
+    ViewBag.Title = "SelectSchool Create";
 }
 
 <h2>
-    Choose School for Mark Entry
+    Choose School for MarkSheet Entry
 </h2>
 
 <div class="row">
-    @using (Html.BeginForm("AddEdit", "MarkSheet", FormMethod.Get))
+    <div class="col-md-12">
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+
+    </div>
+    @using (Html.BeginForm("Add", "MarkSheet", FormMethod.Get))
     {
         <div class="col-md-6">
             <div class="form-group">

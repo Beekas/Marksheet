@@ -5,10 +5,18 @@
 }
 
 <h2>Index</h2>
+<div class="col-md-12">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
 
+</div>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("MarkSheet Entry", "SelectSchool",new { }, new{ @class = "btn btn-info" }) @Html.ActionLink("MarkSheet Edit", "SelectSchoolEdit", new { }, new { @class = "btn btn-info" }) 
+    @Html.ActionLink("MarkSheet Print", "SelectSchoolPrint", new { }, new { @class = "btn btn-info" }) 
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -59,8 +67,8 @@
             @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-            @Html.ActionLink("Mark Sheet", "viewmarksheet", new { id = item.Id })|
-            @Html.ActionLink("Grade Sheet", "viewgradesheet", new { id = item.Id })
+            @Html.ActionLink("Grade Sheet", "viewgradesheet", new { id = item.Id },new { @class = "btn btn-info" })
+            @*@Html.ActionLink("Grade Sheet", "viewgradesheet", new { id = item.Id })*@
         </td>
     </tr>
 }
