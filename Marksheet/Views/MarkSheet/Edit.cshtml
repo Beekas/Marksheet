@@ -13,22 +13,23 @@
         @Html.ValidationSummary()
         if (ViewBag.ErrorMessage != null)
         {
-            <div style="border:solid 1px green">
+            <div class="alert alert-danger">
                 @ViewBag.ErrorMessage
             </div>
         }
+      
         <div class="col-md-4">
             <label>Terminal</label>
-            @Html.DropDownList("Term",Model[0].Terminal, new { @class = "form-control", id = "ddlTerm" })
+            @Html.DropDownList("Term", Model[0].Terminal, new { @class = "form-control", id = "ddlTerm" })
         </div>
         <div class="col-md-4">
             <label>Academic Year</label>
             @Model[0].AcedamicYearId
-            @Html.DropDownList("AcedamicYearId",Model[0].AcademicYears,new {@class="form-control" })
+            @Html.DropDownList("AcedamicYearId", Model[0].AcademicYears, new { @class = "form-control" })
         </div>
         <div class="col-md-4">
             <label>School Name</label>
-            @Html.DropDownList("SchoolId",Model[0].Schools,new {@class="form-control" })
+            @Html.DropDownList("SchoolId", Model[0].Schools, new { @class = "form-control" })
         </div>
         <div class="col-md-12">&nbsp;</div>
         <table class="table table-bordered" id="dataTable" border="0" cellpadding="0" cellspacing="0">
@@ -52,7 +53,7 @@
                     <th rowspan="2">@Model[0].Optional1Name</th>
 
                 }
-               
+
 
             </tr>
             <tr>
@@ -82,7 +83,7 @@
                     <th>TH</th>
                 }
 
-             
+
 
 
             </tr>
@@ -91,48 +92,48 @@
                 int j = 0;
                 foreach (var i in Model)
                 {
-            <tr id="dataRow">
-                <td>@Model[j].StudentName</td>
-                <td>@Html.TextBoxFor(a => a[j].Attendance, new { @class = "form-control", id = "txtAttendance" })</td>
-                <td>@Html.TextBoxFor(a => a[j].EnglishPM, new { @class = "form-control", id = "txtEngPr" })</td>
-                <td>@Html.TextBoxFor(a => a[j].EnglishTM, new { @class = "form-control", id = "txtEng" })</td>
-                <td>@Html.TextBoxFor(a => a[j].MathTM, new { @class = "form-control", id = j + "txtMath" })</td>
-                <td>@Html.TextBoxFor(a => a[j].NepaliPM, new { @class = "form-control", id = "txtNepali" })</td>
-                <td>@Html.TextBoxFor(a => a[j].NepaliTM, new { @class = "form-control", id = "txtNepali" })</td>
-                <td>@Html.TextBoxFor(a => a[j].SocialPM, new { @class = "form-control", id = "txtSocial" })</td>
-                <td>@Html.TextBoxFor(a => a[j].SocialTM, new { @class = "form-control", id = "txtSocial" })</td>
-                <td>@Html.TextBoxFor(a => a[j].SciencePM, new { @class = "form-control", id = "txtSciencePr" })</td>
-                <td>@Html.TextBoxFor(a => a[j].ScienceTM, new { @class = "form-control", id = "txtScienceTh" })</td>
-                <td>@Html.TextBoxFor(a => a[j].HealthPM, new { @class = "form-control", id = "txtHealthPr" })</td>
-                <td>@Html.TextBoxFor(a => a[j].HealthTM, new { @class = "form-control", id = "txtHealthTh" })</td>
-                <td>@Html.TextBoxFor(a => a[j].ObtePM, new { @class = "form-control", id = "txtOBTEPr" })</td>
-                <td>@Html.TextBoxFor(a => a[j].ObteTM, new { @class = "form-control", id = "txtOBTETh" })</td>
-                <td>@Html.TextBoxFor(a => a[j].ComputerPM, new { @class = "form-control", id = "txtComputerPr" })</td>
-                <td>@Html.TextBoxFor(a => a[j].ComputerTM, new { @class = "form-control", id = "txtComputerTh" })</td>
-                @if (Model[0].Opt1HasPractical)
-                {
-                    <td>@Html.TextBoxFor(a => a[j].Optional1PM, new { @class = "form-control", id = "txtOpt1Pr" })</td>
-                    <td>@Html.TextBoxFor(a => a[j].Optional1TM, new { @class = "form-control", id = "txtOpt1Th" })</td>
-                }
-                else
-                {
-                    <td>@Html.TextBoxFor(a => a[j].Optional1TM, new { @class = "form-control", id = "txtOpt2Pr" })</td>
-                }
-               
-                @Html.HiddenFor(a => a[j].Id)
-                @Html.HiddenFor(a => a[j].StudentId)
+                    <tr id="dataRow">
+                        <td>@Model[j].StudentName</td>
+                        <td>@Html.TextBoxFor(a => a[j].Attendance, new { @class = "form-control", id = "txtAttendance" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].EnglishPM, new { @class = "form-control", id = "txtEngPr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].EnglishTM, new { @class = "form-control", id = "txtEng" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].MathTM, new { @class = "form-control", id = j + "txtMath" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].NepaliPM, new { @class = "form-control", id = "txtNepali" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].NepaliTM, new { @class = "form-control", id = "txtNepali" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].SocialPM, new { @class = "form-control", id = "txtSocial" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].SocialTM, new { @class = "form-control", id = "txtSocial" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].SciencePM, new { @class = "form-control", id = "txtSciencePr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].ScienceTM, new { @class = "form-control", id = "txtScienceTh" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].HealthPM, new { @class = "form-control", id = "txtHealthPr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].HealthTM, new { @class = "form-control", id = "txtHealthTh" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].ObtePM, new { @class = "form-control", id = "txtOBTEPr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].ObteTM, new { @class = "form-control", id = "txtOBTETh" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].ComputerPM, new { @class = "form-control", id = "txtComputerPr" })</td>
+                        <td>@Html.TextBoxFor(a => a[j].ComputerTM, new { @class = "form-control", id = "txtComputerTh" })</td>
+                        @if (Model[0].Opt1HasPractical)
+                        {
+                            <td>@Html.TextBoxFor(a => a[j].Optional1PM, new { @class = "form-control", id = "txtOpt1Pr" })</td>
+                            <td>@Html.TextBoxFor(a => a[j].Optional1TM, new { @class = "form-control", id = "txtOpt1Th" })</td>
+                        }
+                        else
+                        {
+                            <td>@Html.TextBoxFor(a => a[j].Optional1TM, new { @class = "form-control", id = "txtOpt2Pr" })</td>
+                        }
 
-                @Html.HiddenFor(a => a[j].Opt1HasPractical)
-                @Html.HiddenFor(a => a[j].AcademicYear)
-                @Html.HiddenFor(a => a[j].School)
-                @Html.HiddenFor(a => a[j].StudentName)
+                        @Html.HiddenFor(a => a[j].Id)
+                        @Html.HiddenFor(a => a[j].StudentId)
+
+                        @Html.HiddenFor(a => a[j].Opt1HasPractical)
+                        @Html.HiddenFor(a => a[j].AcademicYear)
+                        @Html.HiddenFor(a => a[j].School)
+                        @Html.HiddenFor(a => a[j].StudentName)
 
 
-                @Html.HiddenFor(a => a[j].Term)
-                @Html.HiddenFor(a => a[j].SchoolId)
-                @Html.HiddenFor(a => a[j].AcedamicYearId)
+                        @Html.HiddenFor(a => a[j].Term)
+                        @Html.HiddenFor(a => a[j].SchoolId)
+                        @Html.HiddenFor(a => a[j].AcedamicYearId)
 
-            </tr>
+                    </tr>
                     j++;
                 }
             }

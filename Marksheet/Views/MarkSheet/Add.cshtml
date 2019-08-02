@@ -13,7 +13,7 @@
         @Html.ValidationSummary()
         if (ViewBag.ErrorMessage != null)
         {
-            <div style="border:solid 1px green">
+            <div class="alert alert-danger">
                 @ViewBag.ErrorMessage
             </div>
         }
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-4">
             <label>Academic Year</label>
-            @Model[0].AcademicYear
+            @Html.DropDownList("ActiveYearId",Model[0].AcademicYears,"--Select--",new {@class="form-control",id="ddlActiveYear" })
         </div>
         <div class="col-md-4">
             <label>School Name</label>

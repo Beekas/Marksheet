@@ -15,6 +15,21 @@ namespace Marksheet.Controllers
         private string[] Subjects = new string[] { "English", "Nepali", "Mathematics", "Science", "Social Studies", "Health", "OBTE","Computer", "Optional1" };
         private readonly MarkSheetEntities db = new MarkSheetEntities();
 
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(db.Marksheets.Find(id.Value));
+            }
+        }
+
+
         // GET: MarkSheet
         public ActionResult Index()
         {
@@ -307,6 +322,7 @@ namespace Marksheet.Controllers
                 marksvm.RollNo = "";
                 marksvm.SchoolName = marksheet.Student.School.SchoolName;
                 marksvm.SchoolAddress = marksheet.Student.School.Municipality;
+                marksvm.Logo = "/images/" + marksheet.SchoolId.ToString() + ".jpg";
 
                 marksvm.FatherName = marksheet.Student.FatherName;
                 marksvm.MotherName = marksheet.Student.MotherName;
@@ -629,8 +645,8 @@ namespace Marksheet.Controllers
         {
             if (string.IsNullOrEmpty(SchoolId))
             {
-                TempData["ErrorMessage"] = "Error!";
-                Response.Redirect("SelectSchool");
+                TempData["ErrorMessage"] = "Error! Select School and Submit.";
+                return RedirectToAction("SelectSchool");
             }
             int schoolId = Convert.ToInt32(SchoolId);
 
@@ -638,18 +654,20 @@ namespace Marksheet.Controllers
                 new SelectListItem{Text="First",Value="First" },new SelectListItem{Text="Second",Value="Second" },new SelectListItem{Text="Final",Value="Final"}
             };
 
+            SelectList activeYears = new SelectList(db.AcademicYears, "Id", "Year");
+
             IEnumerable<Student> students = db.Students.Where(m => m.SchoolId == schoolId);
 
             if (!students.Any())
             {
                 TempData["ErrorMessage"] = "No record found for students.";
-                Response.Redirect("SelectSchool");
+                return RedirectToAction("SelectSchool");
             }
             AcademicYear year = db.AcademicYears.FirstOrDefault(m => m.ActiveYear);
             if (!db.AcademicYears.Any(m => m.ActiveYear))
             {
                 TempData["ErrorMessage"] = "No Active academic year found.Please make one of them active.";
-                Response.Redirect("SelectSchool");
+                return RedirectToAction("SelectSchool");
             }
 
             IEnumerable<Subject> subjects = db.OptionalSubjects.Where(m => m.SchoolId == schoolId).Select(m => m.Subject);
@@ -664,7 +682,7 @@ namespace Marksheet.Controllers
             else
             {
                 TempData["ErrorMessage"] = "No record found for optional subject. Select at least two optional subject for selected school.";
-                Response.Redirect("SelectSchool");
+                return RedirectToAction("SelectSchool");
             }
 
 
@@ -684,6 +702,7 @@ namespace Marksheet.Controllers
             marks[0].AcademicYear = year.Year;
             marks[0].School = db.Schools.Find(schoolId).SchoolName;
             marks[0].Optional1Name = optional1;
+            marks[0].AcademicYears = activeYears;
             return View(marks);
         }
 
@@ -696,11 +715,15 @@ namespace Marksheet.Controllers
                                                      new SelectListItem{Text="Second",Value="Second" },
                                                     new SelectListItem{Text="Final",Value="Final"}
                                                     };
+            SelectList ActiveYears = new SelectList(db.AcademicYears, "Id", "Year",marks[0].AcedamicYearId);
+            marks[0].AcademicYears = ActiveYears;
+
             marks[0].Terminal = new SelectList(terminals, "Value", "Text");
             if (ModelState.IsValid)
             {
+                int yearId = Convert.ToInt32(col["ActiveYearId"]);
                 School school = db.Schools.Find(marks[0].SchoolId.Value);
-                AcademicYear year = db.AcademicYears.Find(marks[0].AcedamicYearId);
+                AcademicYear year = db.AcademicYears.Find(yearId);
                 string term = col["Term"].ToString();
                 if (string.IsNullOrEmpty(term))
                 {
@@ -753,7 +776,7 @@ namespace Marksheet.Controllers
                     ViewBag.ErrorMessage = "Marks already inserted for selected school and selected terminal exam.";
                     return View(marks);
                 }
-                TempData["ErrorMessage"] = "Error!";
+                TempData["Message"] = "Successfully Inserted!";
                 return RedirectToAction("Index");
             }
             ViewBag.ErrorMessage = "Error! Something Went Wrong.";
@@ -808,9 +831,10 @@ namespace Marksheet.Controllers
         {
             if (string.IsNullOrEmpty(SchoolId) && String.IsNullOrEmpty(Terminal) && ActiveYearId == null)
             {
-                TempData["ErrorMessage"] = "Error!";
-                Response.Redirect("SelectSchoolEdit");
+                TempData["ErrorMessage"] = "Error! Select School, Term and Year and submit.";
+                return RedirectToAction("SelectSchoolEdit");
             }
+            
             int schoolId = Convert.ToInt32(SchoolId);
             int yearId = ActiveYearId.Value;
 
@@ -823,7 +847,7 @@ namespace Marksheet.Controllers
             if (!marksheets.Any())
             {
                 TempData["ErrorMessage"] = "No record found for school, terminal and Year.";
-                Response.Redirect("SelectSchoolEdit");
+                return RedirectToAction("SelectSchoolEdit");
             }
 
             AcademicYear year = db.AcademicYears.Find(yearId);
@@ -840,7 +864,7 @@ namespace Marksheet.Controllers
             else
             {
                 TempData["ErrorMessage"] = "No record found for optional subject. Select at least two optional subject for selected school.";
-                Response.Redirect("SelectSchool");
+                return RedirectToAction("SelectSchool");
             }
 
 
@@ -889,10 +913,20 @@ namespace Marksheet.Controllers
         [HttpPost]
         public ActionResult Edit(List<MarksheetVM> marks, FormCollection col)
         {
-
+            List<SelectListItem> terminals = new List<SelectListItem> {
+                new SelectListItem{Text="First",Value="First" },new SelectListItem{Text="Second",Value="Second" },new SelectListItem{Text="Final",Value="Final"}
+            };
+            marks[0].Terminal = new SelectList(terminals, "value", "text", marks[0].Term);
+            marks[0].AcademicYears = new SelectList(db.AcademicYears, "Id", "Year", marks[0].AcedamicYearId);
+            marks[0].Schools = new SelectList(db.Schools, "Id", "SchoolName", marks[0].SchoolId);
             if (ModelState.IsValid)
             {
                 School school = db.Schools.Find(Convert.ToInt32(col["SchoolId"]));
+                if (db.Students.Find(marks[0].StudentId).SchoolId != school.Id)
+                {
+                    ViewBag.ErrorMessage = "School selected not matched with students School";
+                    return View(marks);
+                }
                 AcademicYear year = db.AcademicYears.Find(Convert.ToInt32(col["AcedamicYearId"]));
                 string term = col["Term"].ToString();
                 if (string.IsNullOrEmpty(term))
@@ -944,8 +978,11 @@ namespace Marksheet.Controllers
                 //    ViewBag.ErrorMessage = "Marks already inserted for selected school and selected terminal exam.";
                 //    return View(marks);
                 //}
+                TempData["Message"] = "Successfully Updated!";
                 return RedirectToAction("Index");
             }
+            
+          
             ViewBag.ErrorMessage = "Error! Something Went Wrong.";
             return View(marks);
         }
@@ -995,8 +1032,9 @@ namespace Marksheet.Controllers
                         marksvm.MotherName = item.Student.MotherName;
                         marksvm.StudentAddress = item.Student.Address;
                         marksvm.PresentDay = marksheet.Attendance.ToString();
-                        marksvm.AcademicYear = activeDays;
-                        marksvm.AcademicDay =item.AcademicYear.Year.ToString();
+                        marksvm.AcademicYear = marksheet.AcademicYear.Year;
+                        marksvm.AcademicDay = activeDays;
+                        marksvm.Logo = "/images/" + item.SchoolId.ToString() + ".jpg";
 
                         foreach (string subitem in Subjects)
                         {

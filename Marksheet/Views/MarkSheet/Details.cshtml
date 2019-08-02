@@ -1,0 +1,198 @@
+﻿@model Marksheet.Models.Marksheet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Marksheet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentName)
+        </dd>
+
+        <dt>
+          School
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.School.SchoolName)
+        </dd>
+
+      
+
+        <dt>
+          Academic Year
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AcademicYear.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Term)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attendance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attendance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnglishPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnglishPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnglishTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnglishTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NepaliTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NepaliTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NepaliPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NepaliPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MathTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MathTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SocialTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SocialPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SciencePM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SciencePM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScienceTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScienceTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObtePM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObtePM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObteTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObteTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComputerTM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComputerTM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComputerPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComputerPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Optional1TM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Optional1TM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Optional1PM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Optional1PM)
+        </dd>
+
+    
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
